@@ -1,0 +1,46 @@
+.cartModal {
+  width: 30%;
+  height: 89vh;
+  position: fixed;
+  /* overflow: hidden; */
+  top: 80px;
+  justify-content: end;
+  margin-left: 70%;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(224, 224, 159);
+}
+.cartModal button {
+  margin-left: 89%;
+  margin-top: 2%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+.cartModal h1 {
+  text-align: center;
+  font-family: "Labrada", serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: black;
+}
+.cartModal table {
+  width: 100%;
+  height: 40vh;
+}
+.cartModal table th {
+  width: 45%;
+  border-bottom: 1px solid black;
+  justify-content: space-between;
+}
+.cartModal table h1 {
+  margin-left: 15%;
+  width: 100%;
+}
+.purchaseBtn {
+  font-size: 50px;
+  margin-right: 50%;
+}
