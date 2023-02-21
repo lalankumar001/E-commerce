@@ -50,7 +50,7 @@ const Navbar = (props) => {
           </div>
         </div>
         {/* Cart item added here */}
-        <div onClick={props.modalHandler} className="nav-item fs-6 btn btn-info mx-5">
+        <div onClick={props.onModalToggle} className="nav-item fs-6 btn btn-info mx-5">
           <FaCartPlus />
           Cart
         </div>
