@@ -12,3 +12,11 @@
   margin-left: 40%;
   margin-top: 20px;
 }
+.Cartbadge  {
+  border: 1px solid black;
+  border-radius: 50px;
+  position: relative;
+  width: 100%;
+  margin-left: 50%;
+  
+}

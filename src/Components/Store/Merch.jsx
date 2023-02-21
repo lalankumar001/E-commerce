@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from './Store.module.css';
+import styles from "./Store.module.css";
+import Modal from "../Modal/Modal";
 const cartElements = [
   {
     title: "Colors",
@@ -41,14 +42,16 @@ const cartElements = [
   },
 ];
 
-const Merch = () => {
-  const [addItem , setAddItem] = useState(false);
-  const AddItemHandler =() =>{
-    setAddItem(addItem +1, 'item added')
-  }
+const Merch = (props) => {
+  const [addItem, setAddItem] = useState(false);
+  const AddItemHandler = () => {
+    setAddItem(addItem + 1, "item added");
+  };
   return (
-    <div>
-      {addItem}
+    <div className="Cartbadge">
+         <h4 className="badge badge-light btn btn-dark">
+        {addItem}
+        </h4>
       <header>
         <h1 className="text-center fs-1 p-3 ">Merch</h1>
       </header>
@@ -56,10 +59,16 @@ const Merch = () => {
         <div className="container row justify-content-center mx-5">
           {cartElements.map((product) => (
             <div key={product.title} className="col border w-25">
-              <img src={product.imageUrl} alt={product.title} className={styles.zoomMerch}/>
+              <img
+                src={product.imageUrl}
+                alt={product.title}
+                className={styles.zoomMerch}
+              />
               <h4 className="col-12">{product.title}</h4>
               <p className="">${product.price}</p>
-              <button className="btn btn-primary p-2" onClick={AddItemHandler} >Add to Cart</button>
+              <button className="btn btn-primary p-2" onClick={AddItemHandler}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>

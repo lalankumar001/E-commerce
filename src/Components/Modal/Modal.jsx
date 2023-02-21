@@ -11,7 +11,7 @@ const Modal = () => {
       {ReactDOM.createPortal(
         <div className={styles.cartModal}>
           {/* Modal close btn and its onclick function and its css like display none */}
-          <button onClick={() => (modalElement.style.display = "none")}>
+          <button onClick={() => (modalElement.style.display = "none" )}>
             X
           </button>
           <h1>Cart</h1>
@@ -31,7 +31,7 @@ const Modal = () => {
           </table>
 
           <div className={styles["purchaseBtn"]}>
-            <button>PURCHASE</button>
+            <button onClick={()=>alert('Item has been purchase') }>PURCHASE</button>
           </div>
         </div>,
         modalElement
