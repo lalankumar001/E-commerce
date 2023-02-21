@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from './Store.module.css';
+import SingleProduct from "../products/SingleProduct";
+import styles from "./Store.module.css";
 const cartElements = [
   {
     title: "Colors",
@@ -42,28 +43,12 @@ const cartElements = [
 ];
 
 const Merch = () => {
-  const [addItem , setAddItem] = useState(false);
-  const AddItemHandler =() =>{
-    setAddItem(addItem +1, 'item added')
-  }
   return (
     <div>
-      {addItem}
-      <header>
-        <h1 className="text-center fs-1 p-3 ">Merch</h1>
-      </header>
-      <main>
-        <div className="container row justify-content-center mx-5">
-          {cartElements.map((product) => (
-            <div key={product.title} className="col border w-25">
-              <img src={product.imageUrl} alt={product.title} className={styles.zoomMerch}/>
-              <h4 className="col-12">{product.title}</h4>
-              <p className="">${product.price}</p>
-              <button className="btn btn-primary p-2" onClick={AddItemHandler} >Add to Cart</button>
-            </div>
-          ))}
-        </div>
-      </main>
+      <h1 className="text-center fs-1 p-3 ">Merch</h1>
+      {cartElements.map((item) => (
+        <SingleProduct key={item.title} product={item} />
+      ))}
     </div>
   );
 };

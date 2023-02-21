@@ -1,33 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
+import CartContext from "../../store/cart-context";
 import styles from "./Modal.module.css";
-
 
 const modalElement = document.getElementById("modal");
 
-const Modal = () => {
+const Modal = (props) => {
+  const cartCtx = useContext(CartContext);
+
   return (
-    <div className="">
+    <div>
       {ReactDOM.createPortal(
         <div className={styles.cartModal}>
           {/* Modal close btn and its onclick function and its css like display none */}
-          <button onClick={() => (modalElement.style.display = "none")}>
-            X
-          </button>
+          <button onClick={props.onModalToggle}>X</button>
           <h1>Cart</h1>
           <table>
+            <thead>
+              <tr>
+                <th>Items</th>
+                <th>Price</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
             <tbody>
-              <thead>
-                <tr>
-                  <th>Items</th>
-
-                  <th>Price</th>
-
-                  <th>Quantity</th>
+              {cartCtx.items.map((item) => (
+                <tr key={item.title}>
+                  <td>{item.title}</td>
+                  <td>{item.price}</td>
+                  <td>{item.quantity}</td>
                 </tr>
-              </thead>
+              ))}
+              <tr>
+                <td>
+                  <h1>Total $</h1>
+                </td>
+              </tr>
             </tbody>
-            <h1>Total $</h1>
           </table>
 
           <div className={styles["purchaseBtn"]}>

@@ -1,27 +1,15 @@
-import React,{useState} from "react";
-import Music from "./Music";
+import React from "react";
 import Merch from "./Merch";
-import Cart from "../Cart/Cart";
-import styles from './Store.module.css'
-import Modal from "../Modal/Modal";
+import Music from "./Music";
+import styles from "./Store.module.css";
 
-const Store= ()=>{
-  const [isShown, setShown] = useState(false);
- const modalHandler =()=>{
-  setShown(prev => !prev)
- }
- 
-  return(
+const Store = () => {
+  return (
     <div className={styles.store}>
-      <Music/>
-      <Merch/>
-    {/* Cart Modal Showing Button in Store Page Wher all data comes from Merch and Music components */}
-      <div className={styles['cartbtn']}>
-      {isShown && <Modal />}
-       <Cart   modalHandler={modalHandler}/>
-      </div>
+      <Music />
+      <Merch />
     </div>
-  )
-}
+  );
+};
 
 export default Store;
