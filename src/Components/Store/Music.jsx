@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SingleProduct from "../products/SingleProduct";
+import SingleProducts from "../AllProducts/SingleProducts";
 import styles from "./Store.module.css";
 
 const cartElements = [
@@ -9,8 +9,6 @@ const cartElements = [
     price: 100,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-    quantity: 2,
   },
 
   {
@@ -19,8 +17,6 @@ const cartElements = [
     price: 50,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-    quantity: 3,
   },
 
   {
@@ -29,8 +25,6 @@ const cartElements = [
     price: 70,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-    quantity: 1,
   },
   {
     title: "Black Colors",
@@ -38,17 +32,16 @@ const cartElements = [
     price: 70,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Shirt.png",
-
-    quantity: 1,
   },
 ];
 
-const Music = () => {
+const Music = (props) => {
   return (
     <div>
       <h1 className="text-center fs-1 p-3 ">Music</h1>
+
       {cartElements.map((item) => (
-        <SingleProduct key={item.title} product={item} />
+        <SingleProducts key={item.title} product={item} />
       ))}
     </div>
   );

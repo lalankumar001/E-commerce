@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import CartProvider from "./globalStore/CartProvider";
 import "./index.css";
-import CartProvider from "./store/CartProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
