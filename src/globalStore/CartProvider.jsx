@@ -1,51 +1,75 @@
-import React,{useState} from 'react'
-import CartContext from './CartContext'
+import React, { useState } from "react";
+import CartContext from "./CartContext";
 
 const CartProvider = (props) => {
-    // Declaring initial state
-    const[cartItems,setCartItems] =useState({
-        items:[],
-        totalAmount: 0,
-    })
+  // Declaring initial state
+  const [cartItems, setCartItems] = useState({
+    items: [],
+    totalAmount: 0,
+  });
 
-   const addItemHandler = (product) =>{
-    console.log(product.title);
-    setCartItems(prevState =>({
-        items: [...prevState.items,product],
-        totalAmount: prevState.totalAmount + product.price
+  const addItemHandler = (product) => {
+    setCartItems((prevState) => {
+      const updatedState = { ...prevState };
+      const foundIdx = updatedState.items.findIndex(
+        (item) => item.title === product.title
+      );
 
-    }))
-   }
+      if (foundIdx >= 0) {
+        // item already exists
+        updatedState.items[foundIdx].quantity++;
+      } else {
+        updatedState.items.push(product);
+      }
+      updatedState.totalAmount += product.price;
 
-   const removeItemHandler = (product) =>{
-    setCartItems(prevState =>({
-        items: prevState.items.filter(item => item.title!== product.title),
-        totalAmount: prevState.totalAmount - product.price,
-    })) 
-   }
+      return updatedState;
+    });
+  };
 
-   const clearItemsHandler = (product) =>{
-    setCartItems(prevState =>({
+  const removeItemHandler = (product) => {
+    setCartItems((prevState) => {
+      const updatedState = { ...prevState };
+      const foundIdx = updatedState.items.findIndex(
+        (item) => item.title === product.title
+      );
+
+      if (updatedState.items[foundIdx].quantity > 1) {
+        updatedState.items[foundIdx].quantity--;
+      } else {
+        // remove this item from state
+        updatedState.items = prevState.items.filter(
+          (item) => item.title !== product.title
+        );
+      }
+      updatedState.totalAmount -= product.price;
+
+      return updatedState;
+    });
+  };
+
+  const clearItemsHandler = (product) => {
+    setCartItems((prevState) => ({
       ...prevState,
-            items: [],
-            totalAmount: 0
-    }))
-   }
+      items: [],
+      totalAmount: 0,
+    }));
+  };
 
-    // value that will be received all child components form our global store /state
-const cartCtx ={
+  // value that will be received all child components form our global store /state
+  const cartCtx = {
     items: cartItems.items,
-    onAdditems:addItemHandler,
-    onRemoveitems:removeItemHandler,
-    onClearitems:clearItemsHandler,
-    totalAmount:cartItems.totalAmount
-}
+    onAdditems: addItemHandler,
+    onRemoveitems: removeItemHandler,
+    onClearitems: clearItemsHandler,
+    totalAmount: cartItems.totalAmount,
+  };
 
   return (
-    <CartContext.Provider value={cartCtx} >
-        {props.children}
+    <CartContext.Provider value={cartCtx}>
+      {props.children}
     </CartContext.Provider>
-    )
-}
+  );
+};
 
-export default CartProvider
+export default CartProvider;

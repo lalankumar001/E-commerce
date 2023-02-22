@@ -1,4 +1,4 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import CartContext from "../../globalStore/CartContext";
 import styles from "./Modal.module.css";
@@ -6,7 +6,7 @@ import styles from "./Modal.module.css";
 const modalElement = document.getElementById("modal");
 
 const Modal = (props) => {
- const cartCtx =useContext(CartContext)
+  const cartCtx = useContext(CartContext);
 
   return (
     <div>
@@ -16,33 +16,42 @@ const Modal = (props) => {
           <button onClick={props.onModalToggle}>X</button>
           <h1>Cart</h1>
           <table>
-            
             <thead>
-              
               <tr>
                 <th>Items</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Quantity</th>
               </tr>
-
             </thead>
             <tbody className="w-75">
               {cartCtx.items.map((item) => (
-                <tr key={item.id}>
+                <tr key={item.title}>
                   <td>{item.title}</td>
-                  <td className="bg-dark h-50vh"><img src={item.imageUrl} alt="" /></td>
+                  <td className="bg-dark h-50vh">
+                    <img src={item.imageUrl} alt="" />
+                  </td>
                   <td>{item.price}</td>
                   <td>{item.quantity}</td>
-                  <div>
-                  <button onClick={() =>  cartCtx.onRemoveitems(item)}>-</button>
-                  <button onClick={() => cartCtx.onAdditems(item)}>+</button>
-                  </div>
+                  <td>
+                    <div>
+                      <button onClick={() => cartCtx.onRemoveitems(item)}>
+                        -
+                      </button>
+                      <button
+                        onClick={() =>
+                          cartCtx.onAdditems({ ...item, quantity: 1 })
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               ))}
               <tr>
                 <td>
-                  <h1>Total $</h1>
+                  <h1>Total ${cartCtx.totalAmount}</h1>
                 </td>
               </tr>
             </tbody>

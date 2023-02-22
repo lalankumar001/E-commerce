@@ -1,9 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import CartContext from "../../globalStore/CartContext";
 import styles from "./Navbar.module.css";
 
 const Navbar = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  let totalQty = 0;
+  cartCtx.items.forEach((item) => (totalQty += item.quantity));
+
   return (
     <div className={styles.navbaritems}>
       <nav className="navbar navbar-expand-lg bg-dark">
@@ -50,11 +56,14 @@ const Navbar = (props) => {
           </div>
         </div>
         {/* Cart item added here */}
-        <div onClick={props.onModalToggle} className="nav-item fs-6 btn btn-info mx-5">
+        <div
+          onClick={props.onModalToggle}
+          className="nav-item fs-6 btn btn-info mx-5"
+        >
           <FaCartPlus />
           Cart
+          {totalQty}
         </div>
-
       </nav>
     </div>
   );
