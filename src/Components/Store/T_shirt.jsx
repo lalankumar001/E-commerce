@@ -24,7 +24,7 @@ const T_shirt = (props) => {
   return (
     <div>
       <h1 className="text-center">T-shirt</h1>
-      <div className="cart-items">
+      <div>
         {cartElements.map((item) => (
           <SingleProducts key={item.title} product={item} />
         ))}

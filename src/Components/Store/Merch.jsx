@@ -20,9 +20,9 @@ const cartElements = [
 
 const Merch = (props) => {
   return (
-    <div className="container">
+    <div>
       <div>
-        <h1 className="text-center fs-1 p-3 ">Merch</h1>
+        <h1 className="text-center">Merch</h1>
         {cartElements.map((item) => (
           <SingleProducts key={item.title} product={item} />
         ))}

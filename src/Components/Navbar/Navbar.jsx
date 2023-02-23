@@ -15,7 +15,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid ">
           <Link to="/" className="navbar-brand fs-2 fw-2 text-info">
-            E-comm
+            E-market
           </Link>
           <button
             className="navbar-toggler"
@@ -43,12 +43,12 @@ const Navbar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Store" className="nav-link  " href="#">
+                <Link to="/Store" className="nav-link" >
                   Store
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/About" className="nav-link" href="#">
+                <Link to="/About" className="nav-link">
                   About
                 </Link>
               </li>
@@ -60,9 +60,9 @@ const Navbar = (props) => {
           onClick={props.onModalToggle}
           className="nav-item fs-6 btn btn-info mx-5"
         >
-          <FaCartPlus />
-          Cart
-          {totalQty}
+          Cart <FaCartPlus />
+          {/* Cart Badge below */}
+       <span className="badge text-bg-dark ">{totalQty}</span>
         </div>
       </nav>
     </div>

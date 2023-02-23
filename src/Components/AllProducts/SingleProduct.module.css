@@ -1,0 +1,10 @@
+.ProductDes{
+    margin-left: 40%;
+    margin-top: -13%;
+    width: 50%;
+    height: 100%;
+}
+.ProductDes h1{
+    text-decoration: line-through;
+    font-size: 2em;
+}

@@ -18,9 +18,9 @@ const Modal = (props) => {
           <table>
             <thead>
               <tr>
-                <th>Items</th>
+                <th>Item Name</th>
+                <th>Item Image</th>
                 <th>Price</th>
-                <th>Quantity</th>
                 <th>Quantity</th>
               </tr>
             </thead>
@@ -28,7 +28,7 @@ const Modal = (props) => {
               {cartCtx.items.map((item) => (
                 <tr key={item.title}>
                   <td>{item.title}</td>
-                  <td className="bg-dark h-50vh">
+                  <td className="h-50vh">
                     <img src={item.imageUrl} alt="" />
                   </td>
                   <td>{item.price}</td>
