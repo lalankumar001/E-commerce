@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Components/About/About";
@@ -11,9 +11,11 @@ import Navbar from "./Components/Navbar/Navbar";
 import Store from "./Components/Store/Store";
 import ProductDetails from "./Components/AllProductDetails/ProductDetails";
 import AuthForm from "./Components/Auth/AuthForm";
+import AuthContext from "./globalStore/AuthContext";
 
 function App() {
   const [isShown, setShown] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   const modalHandler = () => {
     setShown((prev) => !prev);
@@ -26,14 +28,20 @@ function App() {
       <Routes>
         <Route exact path="/Cart" element={<Cart />} />
         <Route exact path="/Home" element={<Home />} />
-        <Route exact path="/Store" element={<Store />} />
+        {authCtx.isLoggedIn && (
+          <Route exact path="/Store" element={<Store />} />
+        )}
         <Route exact path="/About" element={<About />} />
         <Route exact path="/Contact" element={<ContactUs />} />
         <Route exact path="/" element={<Store />} />
-        <Route exact path ='/login' element={<AuthForm />} />
+        <Route exact path="/login" element={<AuthForm />} />
         {/* product details page */}
-        <Route exact path='/Store/Product-details' element={<ProductDetails />} />
-       </Routes>
+        <Route
+          exact
+          path="/Store/Product-details"
+          element={<ProductDetails />}
+        />
+      </Routes>
 
       <Footer />
     </div>

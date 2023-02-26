@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AuthContext from "../../globalStore/AuthContext";
 import CartContext from "../../globalStore/CartContext";
-import AuthForm from "../Auth/AuthForm";
 import styles from "./Navbar.module.css";
 
 const Navbar = (props) => {
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
 
   let totalQty = 0;
   cartCtx.items.forEach((item) => (totalQty += item.quantity));
@@ -43,11 +44,13 @@ const Navbar = (props) => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/Store" className="nav-link" >
-                  Store
-                </Link>
-              </li>
+              {authCtx.isLoggedIn && (
+                <li className="nav-item">
+                  <Link to="/Store" className="nav-link">
+                    Store
+                  </Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link to="/About" className="nav-link">
                   About
@@ -59,9 +62,20 @@ const Navbar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Login" className="nav-link">
-                  Login
-                </Link>
+                {!authCtx.isLoggedIn && (
+                  <Link to="/Login" className="nav-link">
+                    Login
+                  </Link>
+                )}
+                {authCtx.isLoggedIn && (
+                  <button
+                    onClick={() => {
+                      authCtx.onLogout();
+                    }}
+                  >
+                    Logout
+                  </button>
+                )}
               </li>
             </ul>
           </div>
@@ -73,7 +87,7 @@ const Navbar = (props) => {
         >
           Cart <FaCartPlus />
           {/* Cart Badge below */}
-       <span className="badge text-bg-dark ">{totalQty}</span>
+          <span className="badge text-bg-dark ">{totalQty}</span>
         </div>
       </nav>
     </div>
