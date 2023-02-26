@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CartContext from "../../globalStore/CartContext";
+import AuthForm from "../Auth/AuthForm";
 import styles from "./Navbar.module.css";
 
 const Navbar = (props) => {
@@ -50,6 +51,16 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <Link to="/About" className="nav-link">
                   About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Contact" className="nav-link">
+                  Contact
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Login" className="nav-link">
+                  Login
                 </Link>
               </li>
             </ul>

@@ -32,11 +32,16 @@ const ApiCall = () => {
 }
   return(
     <div>
+        <form action="" className='mt-2' >
+            <input type="text" name="search" placeholder="Search" />
+            <button type="submit">Add Movie</button>
+        </form>
       <h1>Api Call</h1>
       <button onClick={fetchMoviesHandl}>Fetch Movies</button>
       {isLoading && <p>Loading...</p>}
       {!isLoading && error && <p>'Something went wrong ....Retrying' or Erro h Api Check Karo</p>}
       <ul>
+        <li>A New Movies added through add btn</li>
         {movies.map((movie) => (
           <li key={movie.id}>{movie.title}</li>
         ))}
