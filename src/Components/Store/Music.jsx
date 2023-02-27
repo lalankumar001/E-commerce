@@ -37,11 +37,11 @@ const cartElements = [
 
 const Music = (props) => {
   return (
-    <div>
+    <div className=" w-100 row">
       <h1 className="text-center fs-1 p-3 ">Music</h1>
 
       {cartElements.map((item) => (
-        <SingleProducts key={item.title} product={item} />
+      <div className='col'>  <SingleProducts key={item.title} product={item} /> </div>
       ))}
     </div>
   );

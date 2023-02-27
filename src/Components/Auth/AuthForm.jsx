@@ -23,6 +23,7 @@ const AuthForm = () => {
     });
   };
 
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -55,7 +56,7 @@ const AuthForm = () => {
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="email">Your Email</label>
+          <label>Your Email</label>
           <input
             type="email"
             id="email"
@@ -67,7 +68,7 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="password">Your Password</label>
+          <label>Your Password</label>
           <input
             type="password"
             name="password"
@@ -78,7 +79,7 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.actions}>
-          <button type="submit">Submit</button>
+        <button type="submit">Submit</button> 
           <button
             type="button"
             className={classes.toggle}

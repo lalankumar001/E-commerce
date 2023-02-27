@@ -15,9 +15,11 @@ const Store = () => {
       <input type='search' placeholder="Search Items..." className="w-50 h-100 p-2 text-center bg-dark rounded-pill"  />
       <MdSend  className="fs-1 mx-2 text-danger"/>
       </form>
-      <Music />
-      <T_shirt />
-      <Merch />
+      <div> <Music /> </div>
+      <div className="row w-100 h-75">
+    <div className="col">  <T_shirt /> </div>
+     <div className="col">   <Merch /> </div>
+      </div>
     </div>
   );
 };

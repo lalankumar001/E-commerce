@@ -1,11 +1,12 @@
 import React from "react";
-import ApiCall from "./ApiCall";
+// import ApiCall from "./ApiCall";
 import styles from "./About.module.css";
 
 const About = () => {
   return (
     <div>
-      <ApiCall />
+      {/*Api Call Below  */}
+      {/* <ApiCall /> */}
       <div className={styles.about}>
         <h1>The Generics</h1>
       </div>

@@ -63,12 +63,12 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 {!authCtx.isLoggedIn && (
-                  <Link to="/Login" className="nav-link">
+                  <Link to="/Login" className="nav-link btn btn-primary">
                     Login
                   </Link>
                 )}
                 {authCtx.isLoggedIn && (
-                  <button
+                  <button className="btn btn-danger"
                     onClick={() => {
                       authCtx.onLogout();
                     }}
